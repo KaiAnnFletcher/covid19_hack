@@ -1,0 +1,22 @@
+[
+   "Now, you don't have to mention version number. Visit Homepage for more API endpoints",
+   {
+      "active_cases":53946,
+      "active_rate":59.33,
+      "confirmed_cases":90926,
+      "death_cases":2872,
+      "death_rate":3.16,
+      "delta_change_active_cases":911,
+      "delta_change_death_cases":120,
+      "delta_change_recovered_cases":3956,
+      "last_total_active_cases":53035,
+      "last_total_death_cases":2752,
+      "last_total_recovered_cases":30152,
+      "last_updated":"17 May 2020, 08:00 IST (GMT+5:30)",
+      "migrated_cases":1,
+      "passengers_screened":1524266,
+      "recovered_cases":34108,
+      "recovered_rate":37.51
+   
+}
+]

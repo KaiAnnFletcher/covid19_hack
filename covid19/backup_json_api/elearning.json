@@ -1,0 +1,131 @@
+{
+    "apiMessage":"This JSON was provided by Springer Nature",
+    "query":"doi:10.1007/BF00627098",
+    "apiKey":"",
+    "result":[
+       {
+          "total":"1",
+          "start":"1",
+          "pageLength":"10",
+          "recordsDisplayed":"1"
+       }
+    ],
+    "records":[
+       {
+          "contentType":"Article",
+          "identifier":"doi:10.1007/BF00627098",
+          "url":[
+             {
+                "format":"pdf",
+                "platform":"web",
+                "value":"https://www.thelancet.com/journals/lanres/article/PIIS2213-2600(20)30076-X/fulltext?rss=yes&utm_campaign=update-lanres&utm_source=hs_email&utm_medium=email&utm_content=83570178&_hsenc=p2ANqtz-9uESUXj_Lm4iXDmvI7dkxjM6zR338P5y63h6v-10exFeWJ3NmnEemsd0SL_ftH9EkPEZ3SiWrzL7vAIGVMdFVtzj32qQ&_hsmi=83570178"
+             },
+             {
+                "format":"",
+                "platform":"",
+                "value":"https://doi.org/10.1016/S2213-2600(20)30076-X"
+             }
+          ],
+          "title":"Pathological findings of COVID-19 associated with acute respiratory distress syndrome.",
+          "creators":[
+             {
+                "creator":"Xu, Zhe"
+             }
+          ],
+          "publicationName":"The Lancet Respiratory Medicine",
+          "issn":"0004-640X",
+          "eissn":"1572-946X",
+          "openaccess":"false",
+          "journalid":"10509",
+          "doi":"10.1007/BF00627098",
+          "publisher":"Springer",
+          "publicationDate":"1994-12-01",
+          "onlineDate":"",
+          "coverDate":"",
+          "printDate":"",
+          "volume":"222",
+          "number":"1-2",
+          "issuetype":"Combined",
+          "topicalCollection":"",
+          "startingPage":"231",
+          "endingPage":"234",
+          "copyright":"©1994 Kluwer Academic Publishers",
+          "genre":"Letter",
+          "articleCategory":"",
+          "abstract":"Since late December, 2019, an outbreak of a novel coronavirus disease (COVID-19; previously known as 2019-nCoV)1,  2 was reported in Wuhan, China,2 which has subsequently affected 26 countries worldwide. In general, COVID-19 is an acute resolved disease but it can also be deadly, with a 2% case fatality rate. Severe disease onset might result in death due to massive alveolar damage and progressive respiratory failure.2,  3 As of Feb 15, about 66 580 cases have been confirmed and over 1524 deaths. However, no pathology has been reported due to barely accessible autopsy or biopsy.2,  3 Here, we investigated the pathological characteristics of a patient who died from severe infection with severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) by postmortem biopsies. This study is in accordance with regulations issued by the National Health Commission of China and the Helsinki Declaration. Our findings will facilitate understanding of the pathogenesis of COVID-19 and improve clinical strategies against the disease."
+       }
+    ],
+    "facets":[
+       {
+          "name":"subject",
+          "values":[
+             {
+                "value":"Astrobiology",
+                "count":"1"
+             },
+             {
+                "value":"Astronomy, Observations and Techniques",
+                "count":"1"
+             },
+             {
+                "value":"Astrophysics and Astroparticles",
+                "count":"1"
+             },
+             {
+                "value":"Cosmology",
+                "count":"1"
+             },
+             {
+                "value":"Physics",
+                "count":"1"
+             },
+             {
+                "value":"Space Sciences (including Extraterrestrial Physics, Space Exploration and Astronautics)",
+                "count":"1"
+             }
+          ]
+       },
+       {
+          "name":"keyword",
+          "values":[
+ 
+          ]
+       },
+       {
+          "name":"pub",
+          "values":[
+             {
+                "value":"Astrophysics and Space Science",
+                "count":"1"
+             }
+          ]
+       },
+       {
+          "name":"year",
+          "values":[
+             {
+                "value":"1994",
+                "count":"1"
+             }
+          ]
+       },
+       {
+          "name":"country",
+          "values":[
+             {
+                "value":"United States",
+                "count":"1"
+             }
+          ]
+       },
+       {
+          "name":"type",
+          "values":[
+             {
+                "value":"Journal",
+                "count":"1"
+             }
+          ]
+       }
+    ]
+ }

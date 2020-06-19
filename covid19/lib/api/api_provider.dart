@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:hack_covid19/models/topheadlinesnews/response_top_headlinews_news.dart';
 
 
-class ApiProvider {
+class NewsApiProvider {
   final Dio _dio = Dio();
   final String _baseUrl =
       'https://newsapi.org/v2/top-headlines?country=in&apiKey=3b7d288244474becbdd6f350851d6835';

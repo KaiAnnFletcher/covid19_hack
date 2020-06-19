@@ -2,27 +2,45 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:hack_covid19/models/indiaCases_rootnet.dart';
+import 'package:hack_covid19/models/covid_related/covid_world_stats.dart';
 import 'package:hack_covid19/utility/constant.dart';
 import 'package:hack_covid19/widgets/counter.dart';
 import 'package:hack_covid19/customicons/my_flutter_app_icons.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../models/covid_related/covid_world_stats.dart';
 
-
-class GoogleMapWidget extends StatefulWidget {
-  @override
-  GoogleMapState createState() => GoogleMapState();
+Future<CovidCountryStats> fetchCovidGlobalData() async {
+  final response =
+      await http.get('https://api.covid19api.com/summary');
+  //print(json.decode(response.body).cast<Map<String,dynamic>>());
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return CovidCountryStats.fromJson(json.decode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load India toal cases');
+  }
 }
 
-class GoogleMapState extends State<GoogleMapWidget> {
+class WorldStatsWidget extends StatefulWidget {
+  @override
+  WorldStatsState createState() => WorldStatsState();
+}
+
+class WorldStatsState extends State<WorldStatsWidget> {
   Completer<GoogleMapController> _controller = Completer();
   //Future<IndiaTotalCases> futureIndiaTotalCases;
-  Future<IndiaCasesRootNet> futureIndiaTotalCases;
+  Future<CovidCountryStats> futureGlobalCovidData;
 
   @override
   void initState() {
     super.initState();
-    futureIndiaTotalCases = fetchIndiaTotalCasesRootNet();    //fetchIndiaTotalCases();
+    futureGlobalCovidData = fetchCovidGlobalData();    //fetchIndiaTotalCases();
   }
 
   
@@ -31,7 +49,7 @@ class GoogleMapState extends State<GoogleMapWidget> {
     return Scaffold(
       appBar: AppBar(
         leading: Image.asset('assets/images/coronaicon.jpg'),
-        title: Text('COVID19 Wingman'),
+        title: Text('COVID19 WINGMAN'),
         //trailing:
       ),
       body: Stack(
@@ -51,37 +69,36 @@ class GoogleMapState extends State<GoogleMapWidget> {
     return Align(
       alignment: Alignment.center,
       child: Container(
-          height: 300,
+          height: 370,
           padding: EdgeInsets.all(10),
           width: MediaQuery.of(context).size.width,
           child: GoogleMap(
             mapType: MapType.normal,
             initialCameraPosition: CameraPosition(
-              target: LatLng(20.5937, 78.9629),
+              target: LatLng(37.0902, 95.7129),//37.0902° N, 95.7129° W
               //target:LatLng(latlng[0],latlng[1]),
-              zoom: 6,
+              zoom: 12,
             ),
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
               //_setMapStyle(controller);
             },
             zoomControlsEnabled: true,
-            markers: {gramercyMarker, bernardinMarker, blueMarker},
+           // markers: {gramercyMarker, bernardinMarker, blueMarker},
           )),
     );
   }
 
   @override
   Widget buildBottomRowContainer(BuildContext context) {
-    return FutureBuilder<IndiaCasesRootNet>(
-      future: futureIndiaTotalCases,
+    return FutureBuilder<CovidCountryStats>(
+      future: futureGlobalCovidData,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return _buildRowContainer(
-             snapshot.data.data.unOffSummary[0].active,
-             snapshot.data.data.unOffSummary[0].recovered,
-             snapshot.data.data.unOffSummary[0].total,
-            snapshot.data.data.unOffSummary[0].deaths);
+             snapshot.data.global.totalConfirmed,
+             snapshot.data.global.totalRecovered,
+             snapshot.data.global.totalDeaths);
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
@@ -93,7 +110,7 @@ class GoogleMapState extends State<GoogleMapWidget> {
   }
 
   Widget _buildRowContainer(
-      int activeCases, int recoveredCases, int totalCases, int deathCases) {
+      int activeCases, int recoveredCases, int deathCases) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
@@ -129,11 +146,7 @@ class GoogleMapState extends State<GoogleMapWidget> {
               number: recoveredCases,
               title: "Recovered",
             ),
-            Counter(
-              color: Colors.blueAccent,
-              number: totalCases,
-              title: "Total",
-            ),
+           
           ],
         ),
       ),
@@ -149,15 +162,16 @@ class GoogleMapState extends State<GoogleMapWidget> {
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             // buildBarItem(CupertinoIcons.news,_newsFunction),
-
+//
             buildBarItem(MyFlutterApp.newspaper, _newsFunction, 'News'),
+            //
             buildBarItem(
                 MyFlutterApp.online_education, _learningFunction, 'e-Learning'),
             //buildBarItem(CupertinoIcons.book_solid,_learningFunction),
             //buildBarItem(MdiIcons.heart,_fitnessFunction),
-            buildBarItem(Icons.store, _storeFunction, 'Store Locator'),
+            buildBarItem(Icons.fitness_center, _fitnessFunction, 'Fitness'),
             buildBarItem(
-                MyFlutterApp.diet_1_, _fitnessFunction, 'Healthy Meals'),
+                MyFlutterApp.diet_1_, _healthFuntion, 'Healthy Meals'),
           ],
         ),
       ),
@@ -173,26 +187,34 @@ class GoogleMapState extends State<GoogleMapWidget> {
   }
 
   void _fitnessFunction() {
-    Navigator.of(context).pushNamed('/Health');
+    Navigator.of(context).pushNamed('/Fitness');
   }
 
-  void _storeFunction() {
-    Navigator.of(context).pushNamed('/Fitness');
+  void _healthFuntion() {
+    Navigator.of(context).pushNamed('/Health');
   }
 
   Widget buildBarItem(
       IconData iconArgument, Function functionName, String name) {
     return Container(
+         decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(3.0),
+          //border: Border(left: BorderSide(width:3,color: Colors.orange,style: BorderStyle.solid)),
+         // border: Border.all(width: 3.0,)
+        ), 
         width: 80.0,
         margin: EdgeInsets.all(4.0),
-        color: Colors.white,
+        //color: Colors.white,
+        
         child: Column(children: [
           IconButton(icon: Icon(iconArgument), onPressed: functionName),
           Text(
             name,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
+              
               color: Colors.black54,
             ),
           ),
@@ -202,7 +224,7 @@ class GoogleMapState extends State<GoogleMapWidget> {
         );
   }
 
-  Marker gramercyMarker = Marker(
+ /*  Marker gramercyMarker = Marker(
     markerId: MarkerId('gramercy'),
     position: LatLng(40.738380, -73.988426),
     infoWindow: InfoWindow(title: 'Total:100, deaths:20, recovered:80'),
@@ -226,6 +248,6 @@ class GoogleMapState extends State<GoogleMapWidget> {
         title: 'Total:100, deaths:20, recovered:80', snippet: 'Covid cases'),
     icon: BitmapDescriptor.defaultMarkerWithHue(
       BitmapDescriptor.hueViolet,
-    ),
-  );
+    ), 
+  );*/
 }

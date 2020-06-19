@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:hack_covid19/api/api_provider.dart';
 import 'package:hack_covid19/models/topheadlinesnews/response_top_headlinews_news.dart';
 
 
-
 class ApiRepository {
-  final _apiProvider = ApiProvider();
+  final _apiProvider = NewsApiProvider();
 
   Future<ResponseTopHeadlinesNews> fetchTopHeadlinesNews() =>
       _apiProvider.getTopHeadlinesNews();

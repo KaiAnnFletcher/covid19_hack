@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 
 class APIService {
   // API key
-  static const _api_key = "14fdcf61c0mshde9a37b0da8732ep193e84jsn0f166a92394e";
+  static const _api_key = "0b6d4040a6msh8925aeab92fa3b4p142c2ajsnc82bcee5674c";
   // Base API url
-  static const String _baseUrl = "edamam-food-and-grocery-database.p.rapidapi.com";
+  static const String _baseUrl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=1&tags=vegetarian%252Cdessert";
   // Base headers for Response url
   static const Map<String, String> _headers = {
     "content-type": "application/json",
-    "x-rapidapi-host": "edamam-food-and-grocery-database.p.rapidapi.com",
+    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
     "x-rapidapi-key": _api_key,
   };
 

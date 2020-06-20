@@ -1,25 +1,25 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:hack_covid19/models/elearningData.dart';
+import 'package:hack_covid19/models/recipesData.dart';
 import 'package:logger/logger.dart';
 
 class RecipeAPIProvider {
 
-static List<ElearningData> list = new List<ElearningData>();
+static List<RecipesData> list = new List<RecipesData>();
 var logger = Logger();
-  Future<String> _loadELearningAsset() async {
+  Future<String> _loadRecipeAsset() async {
   logger.i("loading data new place");
-  return await rootBundle.loadString('backup_json_api/elearning.json');
+  return await rootBundle.loadString('backup_json_api/new_recipe_template.json');
 }
 
-Future<List<ElearningData>> loadELearningData() async {
+Future<List<RecipesData>> loadRecipesData() async {
   
   await wait(5);
-  String jsonString = await _loadELearningAsset(); 
+  String jsonString = await _loadRecipeAsset(); 
 
 list=(json.decode(jsonString) as List).map((i) =>
-              ElearningData.fromJson(i)).toList();
+              RecipesData.fromJson(i)).toList();
   logger.i("list is " + list.length.toString());
   return list;
 }
@@ -27,74 +27,62 @@ list=(json.decode(jsonString) as List).map((i) =>
 Future wait(int seconds) {
   return new Future.delayed(Duration(seconds: seconds), () => {});
 }
-Future<List<ElearningData>> loadELearningProgrammingData() async {
+Future<List<RecipesData>> loadStarterData() async {
   var logger = Logger();
   
- loadELearningData();
-  List<ElearningData> programmingList = new List<ElearningData>();
-  logger.i("list length within prograaming method" +list.length.toString());
-  for(ElearningData data in list){
+ loadRecipesData();
+  List<RecipesData> starterList = new List<RecipesData>();
+  logger.i("list length within starter method" +list.length.toString());
+  for(RecipesData data in list){
     logger.i("category"+data.category);
-    if (data.category == "Programming"){
-      programmingList.add(data);
+    if (data.category == "Starter"){
+      starterList.add(data);
     }
   }
-  logger.i("returning programming list" + programmingList.length.toString());
-  return programmingList;
+  logger.i("returning starter list" + starterList.length.toString());
+  return starterList;
 }
-Future<List<ElearningData>> loadELearningDIYData() async {
+Future<List<RecipesData>> loadMainCourseData() async {
   var logger = Logger();
   
   await wait(5);
- loadELearningData();
-  List<ElearningData> diyList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "DIY"){
-      diyList.add(data);
+ loadRecipesData();
+  List<RecipesData> mainCourseList = new List<RecipesData>();
+  for(RecipesData data in list){
+    if (data.category == "Main Course"){
+      mainCourseList.add(data);
     }
   }
-  logger.i("returning diy list" + diyList.length.toString());
-  return diyList;
+  logger.i("returning main course list" + mainCourseList.length.toString());
+  return mainCourseList;
 }
-Future<List<ElearningData>> loadELearningMusicData() async {
+Future<List<RecipesData>> loadDessertData() async {
   var logger = Logger();
   await wait(5);
-  loadELearningData();
-  List<ElearningData> musicList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "Music"){
-      musicList.add(data);
+  loadRecipesData();
+  List<RecipesData> dessertList = new List<RecipesData>();
+  for(RecipesData data in list){
+    if (data.category == "Dessert"){
+      dessertList.add(data);
     }
   }
-  logger.i("returning music list" + musicList.length.toString());
-  return musicList;
+  logger.i("returning dessert list" + dessertList.length.toString());
+  return dessertList;
 }
-Future<List<ElearningData>> loadELearningDanceData() async {
+Future<List<RecipesData>> loadBeveragesData() async {
   var logger = Logger();
   await wait(5);
   
-  loadELearningData();
-  List<ElearningData> danceList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "Dance"){
-      danceList.add(data);
+  loadRecipesData();
+  List<RecipesData> beveragesList = new List<RecipesData>();
+  for(RecipesData data in list){
+    if (data.category == "Beverages"){
+      beveragesList.add(data);
     }
   }
-  logger.i("returning dance list" + danceList.length.toString());
-  return danceList;
+  logger.i("returning beverages list" + beveragesList.length.toString());
+  return beveragesList;
 }
-Future<List<ElearningData>> loadELearningGardenData() async {
-  var logger = Logger();
-  await wait(5);
-  loadELearningData();
-  List<ElearningData> gardenList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "Garden"){
-      gardenList.add(data);
-    }
-  }
-  logger.i("returning garden list" + gardenList.length.toString());
-  return gardenList;
-}
+
 
 }

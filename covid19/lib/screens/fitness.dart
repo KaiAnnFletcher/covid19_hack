@@ -2,10 +2,9 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hack_covid19/bloc/learning_bloc.dart';
+import 'package:hack_covid19/bloc/fitness_bloc.dart';
 import 'package:hack_covid19/models/category/category.dart';
-import 'package:hack_covid19/models/elearningData.dart';
-import 'package:intl/intl.dart';
+import 'package:hack_covid19/models/fitnessData.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
@@ -18,8 +17,8 @@ class FitnessScreen extends StatelessWidget {
 
     return Scaffold(
       key: scaffoldState,
-      body: BlocProvider<LearningBloc>(
-        builder: (context) => LearningBloc(),
+      body: BlocProvider<FitnessBloc>(
+        builder: (context) => FitnessBloc(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -73,7 +72,7 @@ class WidgetTitle extends StatelessWidget {
                 text: 'Fitness\n',
                 style: Theme.of(context).textTheme.title.merge(
                       TextStyle(
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.black.withOpacity(0.9),
                       ),
                       
                     ),
@@ -96,7 +95,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
   final listCategories = [
     Category('assets/images/yoga.jpg', 'Yoga'),
     Category('assets/images/zumba.png', 'Zumba'),
-    Category('assets/images/general.jpg', 'General'),
+    Category('assets/images/general.jpg', 'General Fitness'),
     
   ];
 
@@ -104,14 +103,14 @@ class _WidgetCategoryState extends State<WidgetCategory> {
 
   @override
   void initState() {
-    final learningBloc = BlocProvider.of<LearningBloc>(context);
-    learningBloc.dispatch(DataEvent(listCategories[indexSelectedCategory].title));
+    final fitnessBloc = BlocProvider.of<FitnessBloc>(context);
+    fitnessBloc.dispatch(DataEvent(listCategories[indexSelectedCategory].title));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final learningBloc = BlocProvider.of<LearningBloc>(context);
+    final fitnessBloc = BlocProvider.of<FitnessBloc>(context);
     return Container(
       color: Colors.amber,//Color(0xFFE3998A),//Color(0xFFB12D22),//Colors.red,
       height: 74,
@@ -131,7 +130,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
                   onTap: () {
                     setState(() {
                       indexSelectedCategory = index;
-                      learningBloc.dispatch(DataEvent(
+                      fitnessBloc.dispatch(DataEvent(
                           listCategories[indexSelectedCategory].title));
                     });
                   },
@@ -146,7 +145,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
                             ),
                             border: indexSelectedCategory == index
                                 ? Border.all(
-                                    color: Colors.white.withOpacity(0.9),//Color(0xFF4F4140),//Colors.red,
+                                    color: Colors.black.withOpacity(0.9),//Color(0xFF4F4140),//Colors.red,
                                     width: 5.0,
                                   )
                                 : null,
@@ -185,7 +184,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-    final LearningBloc learningBloc = BlocProvider.of<LearningBloc>(context);
+    final FitnessBloc fitnessBloc = BlocProvider.of<FitnessBloc>(context);
     return Padding(
       padding: EdgeInsets.only(
         left: 16.0,
@@ -193,7 +192,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
         right: 16.0,
         bottom: mediaQuery.padding.bottom + 16.0,
       ),
-      child: BlocListener<LearningBloc, DataState>(
+      child: BlocListener<FitnessBloc, DataState>(
         listener: (context, state) {
           if (state is DataFailed) {
             Scaffold.of(context).showSnackBar(
@@ -202,7 +201,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
           }
         },
         child: BlocBuilder(
-          bloc: learningBloc,
+          bloc: fitnessBloc,
           builder: (BuildContext context, DataState state) {
             return _buildWidgetContentLatestNews(state, mediaQuery);
           },
@@ -220,7 +219,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
             : CupertinoActivityIndicator(),
       );
     } else if (state is DataSuccess) {
-      List<ElearningData> data = state.data;
+      List<FitnessData> data = state.data;
       return ListView.separated(
         padding: EdgeInsets.zero,
         itemCount: data.length,
@@ -228,7 +227,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
           return Divider();
         },
         itemBuilder: (context, index) {
-          ElearningData elearningData = data[index];
+          FitnessData fitnessData = data[index];
           if (index == 0) {
             return Stack(
               children: <Widget>[               
@@ -263,7 +262,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                         right: 12.0,
                       ),
                       child: Text(
-                        elearningData.title,
+                        fitnessData.title,
                         style: TextStyle(
                           color: Colors.black,
                         ),
@@ -284,8 +283,8 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                           children:<Widget>[
                              GestureDetector(
                   onTap: () async {
-                    if (await canLaunch(elearningData.link)) {
-                      await launch(elearningData.link);
+                    if (await canLaunch(fitnessData.link)) {
+                      await launch(fitnessData.link);
                     } else {
                       scaffoldState.currentState.showSnackBar(SnackBar(
                         content: Text('Could not launch news'),
@@ -294,7 +293,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                   },
                   child:
                            Text(
-                            '${elearningData.link}',
+                            '${fitnessData.link}',
                             style: TextStyle(
                               color: Colors.red.withOpacity(0.8),
                               fontSize: 11.0,
@@ -305,7 +304,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                       ),
                           //SizedBox(height: 35),
                            Text(
-                              '${elearningData.author}',
+                              '${fitnessData.author}',
                               style: TextStyle(
                                 color: Colors.deepPurple.withOpacity(0.8),
                                 fontSize: 11.0,
@@ -328,8 +327,8 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                           SizedBox(width: 4.0), */
             return GestureDetector(
               onTap: () async {
-                if (await canLaunch(elearningData.link)) {
-                  await launch(elearningData.link);
+                if (await canLaunch(fitnessData.link)) {
+                  await launch(fitnessData.link);
                 }
               },
               child: Container(
@@ -345,7 +344,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              elearningData.title,
+                              fitnessData.title,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
                               style: TextStyle(
@@ -364,7 +363,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                                 ),
                                 SizedBox(width: 4.0), */
                                 Text(
-                                  elearningData.author,
+                                  fitnessData.author,
                                   style: TextStyle(
                                     color: Color(0xFF325384).withOpacity(0.5),
                                     fontSize: 12.0,

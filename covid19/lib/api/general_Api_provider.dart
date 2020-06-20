@@ -89,7 +89,7 @@ Future<List<ElearningData>> loadELearningGardenData() async {
   loadELearningData();
   List<ElearningData> gardenList = new List<ElearningData>();
   for(ElearningData data in list){
-    if (data.category == "Garden"){
+    if (data.category == "Gardening"){
       gardenList.add(data);
     }
   }

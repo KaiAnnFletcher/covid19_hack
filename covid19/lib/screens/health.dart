@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hack_covid19/bloc/learning_bloc.dart';
+import 'package:hack_covid19/bloc/recipe_bloc.dart';
 import 'package:hack_covid19/models/category/category.dart';
-import 'package:hack_covid19/models/elearningData.dart';
-import 'package:intl/intl.dart';
+import 'package:hack_covid19/models/recipesData.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 final GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
@@ -18,14 +18,14 @@ class HealthScreen extends StatelessWidget {
 
     return Scaffold(
       key: scaffoldState,
-      body: BlocProvider<LearningBloc>(
-        builder: (context) => LearningBloc(),
+      body: BlocProvider<RecipeBloc>(
+        builder: (context) => RecipeBloc(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                color: Colors.amber,//Color(0xFFF1F5F9),
+                color: Colors.red,//Color(0xFFF1F5F9),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                 ),
@@ -73,7 +73,7 @@ class WidgetTitle extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(                
-                text: 'Elearning\n',
+                text: 'Healthy Meals\n',
                 style: Theme.of(context).textTheme.title.merge(
                       TextStyle(
                         color: Colors.white.withOpacity(0.9),
@@ -99,7 +99,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
   final listCategories = [
     Category('assets/images/starters.png', 'Starters'),
     Category('assets/images/main-course.png', 'Main Course'),
-    Category('assets/images/desserts.jpg', 'Deserts'),
+    Category('assets/images/desserts.jpg', 'Desserts'),
     Category('assets/images/beverages.jpg', 'Beverages'),
     
   ];
@@ -108,16 +108,16 @@ class _WidgetCategoryState extends State<WidgetCategory> {
 
   @override
   void initState() {
-    final learningBloc = BlocProvider.of<LearningBloc>(context);
-    learningBloc.dispatch(DataEvent(listCategories[indexSelectedCategory].title));
+    final recipeBloc = BlocProvider.of<RecipeBloc>(context);
+    recipeBloc.dispatch(DataEvent(listCategories[indexSelectedCategory].title));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final learningBloc = BlocProvider.of<LearningBloc>(context);
+    final recipeBloc = BlocProvider.of<RecipeBloc>(context);
     return Container(
-      color: Colors.amber,//Color(0xFFE3998A),//Color(0xFFB12D22),//Colors.red,
+      color: Colors.red,//Color(0xFFE3998A),//Color(0xFFB12D22),//Colors.red,
       height: 74,
       child: ListView.builder(
         shrinkWrap: false,
@@ -135,7 +135,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
                   onTap: () {
                     setState(() {
                       indexSelectedCategory = index;
-                      learningBloc.dispatch(DataEvent(
+                      recipeBloc.dispatch(DataEvent(
                           listCategories[indexSelectedCategory].title));
                     });
                   },
@@ -150,7 +150,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
                             ),
                             border: indexSelectedCategory == index
                                 ? Border.all(
-                                    color: Colors.white.withOpacity(0.9),//Color(0xFF4F4140),//Colors.red,
+                                    color: Colors.black.withOpacity(0.9),//Color(0xFF4F4140),//Colors.red,
                                     width: 5.0,
                                   )
                                 : null,
@@ -189,7 +189,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQuery = MediaQuery.of(context);
-    final LearningBloc learningBloc = BlocProvider.of<LearningBloc>(context);
+    final RecipeBloc recipeBloc = BlocProvider.of<RecipeBloc>(context);
     return Padding(
       padding: EdgeInsets.only(
         left: 16.0,
@@ -197,7 +197,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
         right: 16.0,
         bottom: mediaQuery.padding.bottom + 16.0,
       ),
-      child: BlocListener<LearningBloc, DataState>(
+      child: BlocListener<RecipeBloc, DataState>(
         listener: (context, state) {
           if (state is DataFailed) {
             Scaffold.of(context).showSnackBar(
@@ -206,7 +206,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
           }
         },
         child: BlocBuilder(
-          bloc: learningBloc,
+          bloc: recipeBloc,
           builder: (BuildContext context, DataState state) {
             return _buildWidgetContentLatestNews(state, mediaQuery);
           },
@@ -224,7 +224,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
             : CupertinoActivityIndicator(),
       );
     } else if (state is DataSuccess) {
-      List<ElearningData> data = state.data;
+      List<RecipesData> data = state.data;
       return ListView.separated(
         padding: EdgeInsets.zero,
         itemCount: data.length,
@@ -232,7 +232,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
           return Divider();
         },
         itemBuilder: (context, index) {
-          ElearningData elearningData = data[index];
+          RecipesData recipesData = data[index];
           if (index == 0) {
             return Stack(
               children: <Widget>[               
@@ -267,7 +267,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                         right: 12.0,
                       ),
                       child: Text(
-                        elearningData.title,
+                        recipesData.title,
                         style: TextStyle(
                           color: Colors.black,
                         ),
@@ -288,8 +288,8 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                           children:<Widget>[
                              GestureDetector(
                   onTap: () async {
-                    if (await canLaunch(elearningData.link)) {
-                      await launch(elearningData.link);
+                    if (await canLaunch(recipesData.link)) {
+                      await launch(recipesData.link);
                     } else {
                       scaffoldState.currentState.showSnackBar(SnackBar(
                         content: Text('Could not launch news'),
@@ -298,7 +298,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                   },
                   child:
                            Text(
-                            '${elearningData.link}',
+                            '${recipesData.link}',
                             style: TextStyle(
                               color: Colors.red.withOpacity(0.8),
                               fontSize: 11.0,
@@ -309,7 +309,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                       ),
                           //SizedBox(height: 35),
                            Text(
-                              '${elearningData.author}',
+                              '${recipesData.author}',
                               style: TextStyle(
                                 color: Colors.deepPurple.withOpacity(0.8),
                                 fontSize: 11.0,
@@ -332,8 +332,8 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                           SizedBox(width: 4.0), */
             return GestureDetector(
               onTap: () async {
-                if (await canLaunch(elearningData.link)) {
-                  await launch(elearningData.link);
+                if (await canLaunch(recipesData.link)) {
+                  await launch(recipesData.link);
                 }
               },
               child: Container(
@@ -349,7 +349,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
-                              elearningData.title,
+                              recipesData.title,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 3,
                               style: TextStyle(
@@ -368,7 +368,7 @@ class _WidgetLatestNewsState extends State<WidgetLatestNews> {
                                 ),
                                 SizedBox(width: 4.0), */
                                 Text(
-                                  elearningData.author,
+                                  recipesData.author,
                                   style: TextStyle(
                                     color: Color(0xFF325384).withOpacity(0.5),
                                     fontSize: 12.0,

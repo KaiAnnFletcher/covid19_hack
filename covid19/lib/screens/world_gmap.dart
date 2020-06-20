@@ -77,7 +77,7 @@ class WorldStatsState extends State<WorldStatsWidget> {
             initialCameraPosition: CameraPosition(
               target: LatLng(37.0902, 95.7129),//37.0902° N, 95.7129° W
               //target:LatLng(latlng[0],latlng[1]),
-              zoom: 12,
+              zoom: 6,
             ),
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);

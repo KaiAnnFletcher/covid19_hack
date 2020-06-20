@@ -1,14 +1,14 @@
-class RecipesData {
+class FitnessData {
   String category;
   String title;
   String summary;
   String link;
   String author;
 
-  RecipesData(
+  FitnessData(
       {this.category, this.title, this.summary, this.link, this.author});
 
-  RecipesData.fromJson(Map<String, dynamic> json) {
+  FitnessData.fromJson(Map<String, dynamic> json) {
     category = json['category'];
     title = json['title'];
     summary = json['summary'];

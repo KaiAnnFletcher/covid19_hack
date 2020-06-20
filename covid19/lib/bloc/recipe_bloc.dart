@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:hack_covid19/api/api_repository.dart';
-import 'package:hack_covid19/api/general_Api_provider.dart';
 import 'package:hack_covid19/api/recipe_api_provider.dart';
-import 'package:hack_covid19/models/elearningData.dart';
+import 'package:hack_covid19/models/recipesData.dart';
 import 'package:hack_covid19/models/topheadlinesnews/response_top_headlinews_news.dart';
 
 
@@ -13,7 +11,7 @@ class DataInitial extends DataState {}
 class DataLoading extends DataState {}
 
 class DataSuccess extends DataState {
-  final List<ElearningData> data;
+  final List<RecipesData> data;
 
   DataSuccess(this.data);
 }
@@ -37,28 +35,28 @@ class RecipeBloc extends Bloc<DataEvent, DataState> {
   @override
   Stream<DataState> mapEventToState(DataEvent event) async* {
     yield DataLoading();
-    final learningApiProvider = RecipeAPIProvider();
+    final recipeApiProvider = RecipeAPIProvider();
     final categoryLowerCase = event.category.toLowerCase();
     
     switch (categoryLowerCase) {
-      case 'starter':
-        final data = await learningApiProvider.loadELearningProgrammingData();
+      case 'starters':
+        final data = await recipeApiProvider.loadStarterData();
         if (data != null) {
           yield DataSuccess(data);
         } else {
           yield DataFailed('Failed to fetch data');
         }
         break;
-      case 'maincourse':
-        final data = await learningApiProvider.loadELearningDanceData();
+      case 'main course':
+        final data = await recipeApiProvider.loadMainCourseData();
         if (data != null) {
           yield DataSuccess(data);
         } else {
           yield DataFailed('Failed to fetch data');
         }
         break;
-      case 'deserts':
-        final data = await learningApiProvider.loadELearningGardenData();
+      case 'desserts':
+        final data = await recipeApiProvider.loadDessertData();
         if (data != null) {
           yield DataSuccess(data);
         } else {
@@ -66,7 +64,7 @@ class RecipeBloc extends Bloc<DataEvent, DataState> {
         }
         break;
       case 'beverages':
-        final data = await learningApiProvider.loadELearningMusicData();
+        final data = await recipeApiProvider.loadBeveragesData();
         if (data != null) {
           yield DataSuccess(data);
         } else {

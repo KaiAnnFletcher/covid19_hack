@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:hack_covid19/api/api_repository.dart';
 import 'package:hack_covid19/api/general_Api_provider.dart';
 import 'package:hack_covid19/models/elearningData.dart';
 import 'package:hack_covid19/models/topheadlinesnews/response_top_headlinews_news.dart';

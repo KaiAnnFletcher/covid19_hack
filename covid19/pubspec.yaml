@@ -33,6 +33,7 @@ dependencies:
   # File Downloading, Timeout etc.
   dio: ^3.0.3
   font_awesome_flutter: ^8.2.0
+  logger: ^0.9.1
 
   # Flutter widgets that make it easy to implement the BLoC design pattern.
   flutter_bloc: ^0.21.0
@@ -73,6 +74,7 @@ flutter:
   uses-material-design: true
   assets :
       - assets/images/
+      - backup_json_api/
     
     
 

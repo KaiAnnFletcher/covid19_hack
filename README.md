@@ -17,3 +17,7 @@ Being able to implement the News API and have a functional front-end design.
 
 1) API Implementation for each section
 2) Return User-refined data based on preferences and likes of the user
+
+## UI/UX Design Sample
+
+![Landing Page](covid19/assets/images/Screenshot_20200620-111511.png) ![News Category](covid19/assets/images/Screenshot_20200620-111547.png) ![Elearning Category](covid19/assets/images/Screenshot_20200620-111547.png)

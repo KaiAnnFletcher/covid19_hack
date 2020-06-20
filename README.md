@@ -20,4 +20,5 @@ Being able to implement the News API and have a functional front-end design.
 
 ## UI/UX Design Sample
 
-![Landing Page](covid19/assets/images/Screenshot_20200620-111511.png) ![News Category](covid19/assets/images/Screenshot_20200620-111547.png) ![Elearning Category](covid19/assets/images/Screenshot_20200620-111547.png)
+![Landing Page](covid19/assets/images/Screenshot_20200620-111511.png) ![News Category](covid19/assets/images/Screenshot_20200620-111547.png) ![Elearning Category](covid19/assets/images/Screenshot_20200620-111632.png)
+![Fitness Categroy](covid19/assets/images/Screenshot_20200620-134033.png)![Meals Category](covid19/assets/images/Screenshot_20200620-134118.png)

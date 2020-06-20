@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import './gmap.dart';
 import './health.dart';
-import './learning.dart';
 import './news_screen.dart';
-import './store_locator.dart';
+import './learningscreen.dart';
 import 'fitness.dart';
 import 'world_gmap.dart';
 
@@ -31,8 +30,8 @@ class Home extends StatelessWidget {
       routes: <String,WidgetBuilder>{
          '/Home': (BuildContext context) => new WorldStatsWidget(), //new GoogleMapWidget(),
          '/News': (BuildContext context) => new NewsScreen(),
-         '/Fitness': (BuildContext context) => new Fitness(),
-         '/Health': (BuildContext context) => new Health(),
+         '/Fitness': (BuildContext context) => new FitnessScreen(),
+         '/Health': (BuildContext context) => new HealthScreen(),
          '/Learning': (BuildContext context) => new LearningScreen(),
       },
       home: new WorldStatsWidget(),// new GoogleMapWidget(), //home page displayed

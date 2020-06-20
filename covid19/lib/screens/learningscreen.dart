@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hack_covid19/bloc/learning_bloc.dart';
 import 'package:hack_covid19/models/category/category.dart';
 import 'package:hack_covid19/models/elearningData.dart';
-import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final GlobalKey<ScaffoldState> scaffoldState = GlobalKey<ScaffoldState>();
@@ -76,7 +75,7 @@ class WidgetTitle extends StatelessWidget {
                 text: 'Elearning\n',
                 style: Theme.of(context).textTheme.title.merge(
                       TextStyle(
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.black.withOpacity(0.9),
                       ),
                       
                     ),
@@ -150,7 +149,7 @@ class _WidgetCategoryState extends State<WidgetCategory> {
                             ),
                             border: indexSelectedCategory == index
                                 ? Border.all(
-                                    color: Colors.white.withOpacity(0.9),//Color(0xFF4F4140),//Colors.red,
+                                    color: Colors.black.withOpacity(0.9),//Color(0xFF4F4140),//Colors.red,
                                     width: 5.0,
                                   )
                                 : null,

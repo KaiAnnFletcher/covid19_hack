@@ -1,100 +1,74 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:hack_covid19/models/elearningData.dart';
+import 'package:hack_covid19/models/fitnessData.dart';
 import 'package:logger/logger.dart';
 
 class FitnessApiProvider {
 
-static List<ElearningData> list = new List<ElearningData>();
+static List<FitnessData> list = new List<FitnessData>();
 var logger = Logger();
-  Future<String> _loadELearningAsset() async {
-  logger.i("loading data new place");
-  return await rootBundle.loadString('backup_json_api/elearning.json');
+  Future<String> _loadingFitnessAsset() async {
+  logger.i("loading fitness data new place");
+  return await rootBundle.loadString('backup_json_api/fitness.json');
 }
 
-Future<List<ElearningData>> loadELearningData() async {
+Future<List<FitnessData>> loadFitnessData() async {
   
   await wait(5);
-  String jsonString = await _loadELearningAsset(); 
+  String jsonString = await _loadingFitnessAsset(); 
 
 list=(json.decode(jsonString) as List).map((i) =>
-              ElearningData.fromJson(i)).toList();
-  logger.i("list is " + list.length.toString());
+              FitnessData.fromJson(i)).toList();
+  logger.i(" fitness list is " + list.length.toString());
   return list;
 }
 
 Future wait(int seconds) {
   return new Future.delayed(Duration(seconds: seconds), () => {});
 }
-Future<List<ElearningData>> loadELearningProgrammingData() async {
+Future<List<FitnessData>> loadZumbaFitnessData() async {
   var logger = Logger();
   
- loadELearningData();
-  List<ElearningData> programmingList = new List<ElearningData>();
+ loadFitnessData();
+  List<FitnessData> zumbaList = new List<FitnessData>();
   logger.i("list length within prograaming method" +list.length.toString());
-  for(ElearningData data in list){
+  for(FitnessData data in list){
     logger.i("category"+data.category);
-    if (data.category == "Programming"){
-      programmingList.add(data);
+    if (data.category == "Zumba"){
+      zumbaList.add(data);
     }
   }
-  logger.i("returning programming list" + programmingList.length.toString());
-  return programmingList;
+  logger.i("returning zumba list" + zumbaList.length.toString());
+  return zumbaList;
 }
-Future<List<ElearningData>> loadELearningDIYData() async {
+Future<List<FitnessData>> loadYogaFitnessData() async {
   var logger = Logger();
   
   await wait(5);
- loadELearningData();
-  List<ElearningData> diyList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "DIY"){
-      diyList.add(data);
+ loadFitnessData();
+  List<FitnessData> yogaList = new List<FitnessData>();
+  for(FitnessData data in list){
+    if (data.category == "Yoga"){
+      yogaList.add(data);
     }
   }
-  logger.i("returning diy list" + diyList.length.toString());
-  return diyList;
+  logger.i("returning yoga  list" + yogaList.length.toString());
+  return yogaList;
 }
-Future<List<ElearningData>> loadELearningMusicData() async {
+Future<List<FitnessData>> loadGeneralFitnessData() async {
   var logger = Logger();
   await wait(5);
-  loadELearningData();
-  List<ElearningData> musicList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "Music"){
-      musicList.add(data);
+  loadFitnessData();
+  List<FitnessData> generalFitnessList = new List<FitnessData>();
+  for(FitnessData data in list){
+    if (data.category == "General Fitness"){
+      generalFitnessList.add(data);
     }
   }
-  logger.i("returning music list" + musicList.length.toString());
-  return musicList;
+  logger.i("returning general fitness list" + generalFitnessList.length.toString());
+  return generalFitnessList;
 }
-Future<List<ElearningData>> loadELearningDanceData() async {
-  var logger = Logger();
-  await wait(5);
-  
-  loadELearningData();
-  List<ElearningData> danceList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "Dance"){
-      danceList.add(data);
-    }
-  }
-  logger.i("returning dance list" + danceList.length.toString());
-  return danceList;
-}
-Future<List<ElearningData>> loadELearningGardenData() async {
-  var logger = Logger();
-  await wait(5);
-  loadELearningData();
-  List<ElearningData> gardenList = new List<ElearningData>();
-  for(ElearningData data in list){
-    if (data.category == "Garden"){
-      gardenList.add(data);
-    }
-  }
-  logger.i("returning garden list" + gardenList.length.toString());
-  return gardenList;
-}
+
 
 }

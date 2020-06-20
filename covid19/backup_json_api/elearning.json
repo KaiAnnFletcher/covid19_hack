@@ -10,6 +10,33 @@
 },
 
 {  
+   "category": "Programming",
+   "title": "Java Tutorial for Beginners [2020]",
+   "summary": "Java tutorial for beginners - Learn Java, the language behind millions of apps and websites. ",
+    "link":"https://youtu.be/eIrMbAQSU34",
+   "author": "Programming with Mosh"
+
+},
+
+{  
+   "category": "Programming",
+   "title": "SQL Tutorial - Full Database Course for Beginners",
+   "summary": "n this course, we'll be looking at database management basics and SQL using the MySQL RDBMS. The course is designed for beginners to SQL and database management systems, and will introduce common database management topics.",
+    "link":"https://youtu.be/HXV3zeQKqGY",
+   "author": "freeCodeCamp.org"
+
+},
+
+{  
+   "category": "Programming",
+   "title": "Learn Go Programming - Golang Tutorial for Beginners",
+   "summary": "Learn the Go programming language (Golang) in this step-by-step tutorial course for beginners. Go is an open source programming language designed at Google that makes it easy to build simple, reliable, and efficient software.",
+    "link":"https://youtu.be/YS4e4q9oBaU",
+   "author": "freeCodeCamp.org"
+
+},
+
+{  
    "category": "Dance",
    "title": "How To Do Pirouettes, Fouettés, and À La Seconde Turns! I Dance Turn Tutorial with @MissAuti",
    "summary": "LET'S GET TURN..T! Hehe. You guys.. Today is the day I breakdown how to do the fancy turns you see every dancer doing. We have pirouettes.. we have fouettés.. we have second turns.. we have it all.",
@@ -17,39 +44,104 @@
    "author": "Auti Kamal"
 
 },
-{  
-    "category": "DIY",
-    "title": "30 Easy DIY Projects For Beginners That Increase Your Home Value",
-    "summary": "",
-     "link":"https://www.youtube.com/watch?v=2G5f_LpdLh0",
-    "author": "Homedit"
- 
- },
 
 {  
-   "category": "Gardening",
-   "title": "Grow With Me: Gardening for beginners",
-   "summary": "Gardening is not an exact science. Even experienced gardeners make mistakes, so novice gardeners shouldn’t be the least bit intimidated. Follow this advice to arm yourself with the basics ",
-    "link":"https://www.youtube.com/watch?v=9wev8m0LH0M",
-   "author": "B&Q Lets Create"
+   "category": "Dance",
+   "title": "3 Simple Dance Moves for Beginners (Hip Hop Dance Moves Tutorial) | Mihran Kirakosian",
+   "summary": "Hip hop dance tutorial for beginners on how to do 3 simple dance moves. ",
+    "link":"https://youtu.be/ujREEgxEP7g",
+   "author": "MihranTV"
 
 },
+
 {  
-    "category": "Music",
-    "title": "Sweet and Spicy Grilled Shrimp",
-    "summary": "These pictures are available at = http://waltribeiro.net/#pic There are ONLY 12 notes in music (based off of the 7 letters ABCDEFG)",
-     "link":"https://youtu.be/YFMQ1yFBaP0",
-    "author": "Walt Ribeiro"
+   "category": "Dance",
+   "title": "Beginners Dance Tutorial- Afrobeats",
+   "summary": "Here are some Super easy, beginners move to get you started! Put some comfy pants on and let's do it!",
+    "link":"https://youtu.be/3NSiV8E24KA",
+   "author": "IsaWelly"
+
+},
+
+{  
+   "category": "Dance",
+   "title": "Salsa Dancing for Beginners",
+   "summary": "Learn to salsa dance for beginners. This walkthrough video will help you learn how to salsa dance and provide you a series of salsa dance lessons that will teach you the basics steps to salsa dancing, right turns, cross body leads and the cross body lead 180. After practicing this salsa lesson a few times you will be able to do all the salsa moves that we show you at the beginning of the salsa video. For more free salsa dance lessons, check out our page at: https://www.addicted2salsa.com",
+    "link":"https://youtu.be/aVtWSZOttC0",
+   "author": "Addicted2Salsa"
+
+},
+
+{  
+    "category": "DIY",
+    "title": "Pro Balayage Tutorial at home - Step by Step How I do My Hair",
+    "summary": "Hi guys here is my most highly requested balayage hair process. I go over my exact hair formula and show step by step how I achieve my blonde level and tone. I also share my toner and root tap formula. Keep in mind I am a licensed hair dresser, my formula won’t necessarily work for you. I highly suggest caution anytime applying bleach to your own hair. Thank you for watching!",
+     "link":"https://youtu.be/yj6ToTYJ9vs",
+    "author": "ellebangs"
  
  },
 
+ {  
+"category": "DIY",
+   "title": "How To: Natural Nail Manicure",
+   "summary": "Suzie shares some tips on how to do a Natural Nail Manicure like a Pro!",
+    "link":"https://youtu.be/6OlPHcmbSos",
+   "author": "Nail Career Education"
+
+},
 
 {  
-   "category": "Cooking",
-   "title": "How To Master 5 Basic Cooking Skills - Gordon Ramsay",
-   "summary": "Basting shrimp on the grill with a sauce made with honey and chile-garlic sauce delivers flavorful results.",
-    "link":"We've compiled five previous videos into one, helping you to master your basic skills in the kitchen. Cooking rice, chopping an onion, sharpening a knife, deboning a fish and cooking pasta. From Gordon's Ultimate Cookery Course. Gordon Ramsay Ultimate Fit Food: http://amzn.to/2FznHtk Subscribe for weekly cooking videos.",
-   "author": "Gordon Ramsay"
+   "category": "DIY",
+      "title": "6 Woodworking tips & tricks for beginners",
+      "summary": "View all my woodworking plans https://gumroad.com/diycreators",
+       "link":"https://youtu.be/3cME3vK1aaQ",
+      "author": "DIY Creators"
+   
+   },
 
-}
+   {  
+      "category": "DIY",
+         "title": "DIY How to Paint like a Pro Series A to Z",
+         "summary": "Painting your home? Hold on, there are some steps you may not realize can make or break your project. That's right, there's a lot the 'pros' aren't telling you out there. Well Jeff is here to share his secrets on getting the best result possible. Now be warned, this may be more work than you expected, but this is how the pros do it! These extra steps are WELL WORTH IT! So that being said, here is 'How to Paint Like a Pro'.",
+          "link":"https://youtu.be/2eUxz_or2Qs",
+         "author": "Home RenoVision DIY"
+      
+      },
+
+      {  
+         "category": "Gardening",
+            "title": "The Basics of Greenhouse Gardening",
+            "summary": "Hi I'm Jeff King. My job is to raise vegetables for the 300 people living at the Woodcrest Bruderhof in Rifton, NY. I'll be doing a series of videos about our garden - things we've learned that work and things that don't. We start out in the greenhouse. Let me know what you think.",
+             "link":"https://youtu.be/UiIPkcyq95A",
+            "author": "Bruderhof"
+         
+         },
+
+         {  
+            "category": "Gardening",
+               "title": "How To Design The Perfect Landscape | Landscape Design 101",
+               "summary": "Learn how to design the perfect landscape for your home.  We will walk you through the basics of understanding your existing landscape and creating a plan to choosing plant types and hardscaping.",
+                "link":"https://youtu.be/e-wO-LqEQb4",
+               "author": "Lowe's Home Improvement"
+            
+            },
+
+            {  
+               "category": "Gardening",
+                  "title": "Tips for Planting a Cottage Garden! 🌸🌿// Garden Answer",
+                  "summary": "🌿MORE LINKS🌿Support - http://bit.ly/2rNoLUx Buy Garden Answer Merch - bit.ly/2Moi7QF Video Gear we Use - https://goo.gl/iebNUw",
+                   "link":"https://youtu.be/ikOPLN8cI18",
+                  "author": "Garden Answer"
+               
+               },
+
+               {  
+                  "category": "Gardening",
+                     "title": "5 Tips for Planting a New Flower Bed // Garden Answer",
+                     "summary": "🌿MORE LINKS🌿Video Gear we Use - https://goo.gl/iebNUw Favorite Garden Tools - https://goo.gl/nbYXZD Favorite Containers - https://goo.gl/cwR8wY Favorite Soils - https://goo.gl/58CqiG",
+                      "link":"https://youtu.be/VYD_nd9IEgQ",
+                     "author": "Garden Answer"
+                  
+                  }
+
 ]

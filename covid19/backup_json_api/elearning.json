@@ -17,15 +17,32 @@
    "author": "Auti Kamal"
 
 },
+{  
+    "category": "DIY",
+    "title": "30 Easy DIY Projects For Beginners That Increase Your Home Value",
+    "summary": "",
+     "link":"https://www.youtube.com/watch?v=2G5f_LpdLh0",
+    "author": "Homedit"
+ 
+ },
 
 {  
-   "category": "Applying Music Notation To Guitar",
-   "title": "Sweet and Spicy Grilled Shrimp",
-   "summary": "These pictures are available at = http://waltribeiro.net/#pic There are ONLY 12 notes in music (based off of the 7 letters ABCDEFG)",
-    "link":"https://youtu.be/YFMQ1yFBaP0",
-   "author": "Walt Ribeiro"
+   "category": "Gardening",
+   "title": "Grow With Me: Gardening for beginners",
+   "summary": "Gardening is not an exact science. Even experienced gardeners make mistakes, so novice gardeners shouldn’t be the least bit intimidated. Follow this advice to arm yourself with the basics ",
+    "link":"https://www.youtube.com/watch?v=9wev8m0LH0M",
+   "author": "B&Q Lets Create"
 
 },
+{  
+    "category": "Music",
+    "title": "Sweet and Spicy Grilled Shrimp",
+    "summary": "These pictures are available at = http://waltribeiro.net/#pic There are ONLY 12 notes in music (based off of the 7 letters ABCDEFG)",
+     "link":"https://youtu.be/YFMQ1yFBaP0",
+    "author": "Walt Ribeiro"
+ 
+ },
+
 
 {  
    "category": "Cooking",

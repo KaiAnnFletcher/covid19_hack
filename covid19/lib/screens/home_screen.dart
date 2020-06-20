@@ -33,7 +33,7 @@ class Home extends StatelessWidget {
          '/News': (BuildContext context) => new NewsScreen(),
          '/Fitness': (BuildContext context) => new Fitness(),
          '/Health': (BuildContext context) => new Health(),
-         '/Learning': (BuildContext context) => new Learning(),
+         '/Learning': (BuildContext context) => new LearningScreen(),
       },
       home: new WorldStatsWidget(),// new GoogleMapWidget(), //home page displayed
       
